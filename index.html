@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PFTP</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0d0d0d;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #111;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-left a {
+      color: white;
+      text-decoration: none;
+      margin-right: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-left a:hover {
+      color: #e50914;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(to right, #0d0d0d, #1a1a1a);
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      flex: 1 1 300px;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .store-buttons {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .store-buttons img {
+      height: 50px;
+      cursor: pointer;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .hero-image a img {
+      max-height: 500px;
+      width: auto;
+      border-radius: 10px;
+      transition: transform 0.2s;
+    }
+
+    .hero-image a img:hover {
+      transform: scale(1.02);
+    }
+
+    /* News section */
+    .news-section {
+      display: none;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .news-box {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      word-wrap: break-word;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      color: #e0e0e0;
+    }
+
+    .news-header {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #e50914;
+    }
+
+    .highlight {
+      color: #e50914;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-left">
+        <a href="#" onclick="showHome()">HOME</a>
+        <a href="#" onclick="showNews()">NEWS</a>
+        <a href="#">TOOLS</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>WELCOME<br>TO PFTP</h1>
+      <p>Introducing PFTP<br>Welcome to the future of modding</p>
+      <div class="store-buttons">
+        <a href="https://apps.microsoft.com/detail/9mtmr4zhwd70?cid=DevShareMCLPCS" target="_blank">
+          <img src="https://developer.microsoft.com/en-us/store/badges/images/English_get-it-from-MS.png" alt="Get it from Microsoft">
+        </a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <a href="https://apps.microsoft.com/detail/9mtmr4zhwd70?cid=DevShareMCLPCS" target="_blank">
+        <img src="log5.png" alt="Hero Character">
+      </a>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="news-section" id="news">
+    <div class="news-header">Latest Updates</div>
+    <div class="news-box" id="output">Loading update notes...</div>
+  </section>
+
+  <script>
+    const homeSection = document.getElementById("home");
+    const newsSection = document.getElementById("news");
+
+    function showNews() {
+      homeSection.style.display = "none";
+      newsSection.style.display = "block";
+      fetchAndDisplayNotes();
+    }
+
+    function showHome() {
+      newsSection.style.display = "none";
+      homeSection.style.display = "flex";
+    }
+
+    async function fetchAndDisplayNotes() {
+      const proxy = 'https://corsproxy.io/?';
+      const url = 'https://apps.microsoft.com/detail/9mtmr4zhwd70?cid=DevShareMCLPCS&hl=en-US&gl=US';
+
+      try {
+        const response = await fetch(proxy + encodeURIComponent(url));
+        const html = await response.text();
+
+        const match = html.match(/window\.pageMetadata\s*=\s*({[\s\S]*?});/);
+        if (!match || match.length < 2) {
+          throw new Error('Could not find pageMetadata.');
+        }
+
+        const metadata = JSON.parse(match[1]);
+        const notes = metadata.notes?.[0] || "No notes found.";
+
+        const lines = notes.split("\n").map((line, i) => {
+          if (i === 0) {
+            return `<span class="highlight">${line}</span>`;
+          } else {
+            return line;
+          }
+        }).join("<br>");
+
+        document.getElementById('output').innerHTML = lines;
+      } catch (err) {
+        document.getElementById('output').textContent = `Error: ${err.message}`;
+      }
+    }
+  </script>
+</body>
+</html>
