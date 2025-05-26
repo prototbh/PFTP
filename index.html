@@ -39,6 +39,7 @@
       margin-right: 1.5rem;
       font-weight: 500;
       transition: color 0.2s;
+      cursor: pointer;
     }
 
     .nav-left a:hover {
@@ -131,6 +132,389 @@
       font-weight: bold;
     }
 
+    /* Tools section */
+    .tools-section {
+      display: none;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tools-header {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: #e50914;
+      text-align: center;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tool-card {
+      background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      border: 1px solid #333;
+      cursor: pointer;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(229, 9, 20, 0.2);
+      border-color: #e50914;
+    }
+
+    .tool-card h3 {
+      color: #e50914;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tool-card p {
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .tool-card .btn {
+      background: linear-gradient(45deg, #e50914, #ff1e2d);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .tool-card .btn:hover {
+      background: linear-gradient(45deg, #ff1e2d, #e50914);
+      transform: scale(1.05);
+    }
+
+    /* Package Correction Tool */
+    .package-correction {
+      display: none;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .correction-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .correction-header {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #e50914;
+      text-align: center;
+    }
+
+    .back-btn {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #555;
+    }
+
+    .upload-area {
+      border: 2px dashed #555;
+      border-radius: 10px;
+      padding: 3rem;
+      text-align: center;
+      margin: 2rem 0;
+      transition: all 0.3s ease;
+      background: #2a2a2a;
+    }
+
+    .upload-area:hover {
+      border-color: #e50914;
+      background: #333;
+    }
+
+    .upload-area.dragover {
+      border-color: #e50914;
+      background: #333;
+      transform: scale(1.02);
+    }
+
+    .upload-icon {
+      font-size: 3rem;
+      color: #777;
+      margin-bottom: 1rem;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .upload-btn {
+      background: linear-gradient(45deg, #e50914, #ff1e2d);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .upload-btn:hover {
+      background: linear-gradient(45deg, #ff1e2d, #e50914);
+      transform: scale(1.05);
+    }
+
+    .progress-container {
+      display: none;
+      margin: 2rem 0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #333;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(45deg, #e50914, #ff1e2d);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .status-message {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+    }
+
+    .status-success {
+      background: #1a472a;
+      color: #4ade80;
+      border: 1px solid #16a34a;
+    }
+
+    .status-error {
+      background: #471a1a;
+      color: #f87171;
+      border: 1px solid #dc2626;
+    }
+
+    .status-warning {
+      background: #472a1a;
+      color: #fbbf24;
+      border: 1px solid #f59e0b;
+    }
+
+    .warning-dialog {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .warning-content {
+      background: #1e1e1e;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 500px;
+      margin: 2rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .warning-icon {
+      font-size: 3rem;
+      color: #fbbf24;
+      margin-bottom: 1rem;
+    }
+
+    .warning-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .warning-btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-yes {
+      background: #e50914;
+      color: white;
+    }
+
+    .btn-no {
+      background: #333;
+      color: white;
+    }
+
+    .btn-yes:hover {
+      background: #ff1e2d;
+    }
+
+    .btn-no:hover {
+      background: #555;
+    }
+
+    /* UUID Generator Tool */
+    .uuid-generator {
+      display: none;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .uuid-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .uuid-header {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #e50914;
+      text-align: center;
+    }
+
+    .uuid-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .uuid-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .uuid-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .uuid-option input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+    }
+
+    .uuid-option label {
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .uuid-input-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .uuid-input {
+      flex: 1;
+      background: #2a2a2a;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .uuid-btn {
+      background: linear-gradient(45deg, #e50914, #ff1e2d);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .uuid-btn:hover {
+      background: linear-gradient(45deg, #ff1e2d, #e50914);
+      transform: scale(1.05);
+    }
+
+    .uuid-results {
+      margin-top: 2rem;
+    }
+
+    .uuid-result {
+      background: #2a2a2a;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      word-break: break-all;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .uuid-result-text {
+      flex: 1;
+    }
+
+    .uuid-copy-btn {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .uuid-copy-btn:hover {
+      background: #555;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -145,6 +529,29 @@
       .hero-text h1 {
         font-size: 3rem;
       }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .warning-buttons {
+        flex-direction: column;
+      }
+
+      .uuid-input-group {
+        flex-direction: column;
+      }
+
+      .uuid-result {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .uuid-copy-btn {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -154,12 +561,11 @@
       <div class="nav-left">
         <a href="#" onclick="showHome()">HOME</a>
         <a href="#" onclick="showNews()">NEWS</a>
-        <a href="#">TOOLS</a>
+        <a href="#" onclick="showTools()">TOOLS</a>
       </div>
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-text">
       <h1>WELCOME<br>TO PFTP</h1>
@@ -177,25 +583,441 @@
     </div>
   </section>
 
-  <!-- News Section -->
   <section class="news-section" id="news">
     <div class="news-header">Latest Updates</div>
     <div class="news-box" id="output">Loading update notes...</div>
   </section>
 
+  <section class="tools-section" id="tools">
+    <div class="tools-header">PFTP Tools</div>
+    <div class="tools-grid">
+      <div class="tool-card" onclick="showPackageCorrection()">
+        <h3>📦 Package Correction</h3>
+        <p>Fix and correct Minecraft addon packages. Automatically extracts and restructures your .mcpack or .zip files to ensure proper pack format and compatibility.</p>
+        <button class="btn">Launch Tool</button>
+      </div>
+      <div class="tool-card" onclick="showUuidGenerator()">
+        <h3>🔑 UUID Generator</h3>
+        <p>Generate UUIDs for Minecraft addons. Create version 4 UUIDs with options to customize formatting for your specific needs.</p>
+        <button class="btn">Launch Tool</button>
+      </div>
+      <div class="tool-card">
+        <h3>🔧 More Tools Coming</h3>
+        <p>Additional modding tools and utilities are currently in development. Stay tuned for updates!</p>
+        <button class="btn" disabled style="opacity: 0.5;">Coming Soon</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="package-correction" id="package-correction">
+    <div class="correction-container">
+      <button class="back-btn" onclick="showTools()">← Back to Tools</button>
+      <div class="correction-header">Package Correction Tool</div>
+      <p style="text-align: center; color: #ccc; margin-bottom: 2rem;">
+        Upload your .mcpack or .zip file to automatically fix and restructure your addon package.
+      </p>
+      
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">📁</div>
+        <h3>Drop your file here or click to browse</h3>
+        <p style="color: #777; margin-top: 0.5rem;">Supports .mcpack and .zip files</p>
+        <input type="file" id="fileInput" class="file-input" accept=".mcpack,.zip" />
+        <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+          Choose File
+        </button>
+      </div>
+
+      <div class="progress-container" id="progressContainer">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <p id="progressText" style="text-align: center; margin-top: 0.5rem; color: #ccc;">Processing...</p>
+      </div>
+
+      <div class="status-message" id="statusMessage"></div>
+    </div>
+  </section>
+
+  <section class="uuid-generator" id="uuid-generator">
+    <div class="uuid-container">
+      <button class="back-btn" onclick="showTools()">← Back to Tools</button>
+      <div class="uuid-header">UUID Generator</div>
+      
+      <div class="uuid-controls">
+        <div class="uuid-options">
+          <div class="uuid-option">
+            <input type="checkbox" id="hyphensOption" checked>
+            <label for="hyphensOption">Include hyphens</label>
+          </div>
+          <div class="uuid-option">
+            <input type="checkbox" id="uppercaseOption">
+            <label for="uppercaseOption">Uppercase letters</label>
+          </div>
+          <div class="uuid-option">
+            <input type="checkbox" id="bracesOption">
+            <label for="bracesOption">Include braces</label>
+          </div>
+        </div>
+        
+        <div class="uuid-input-group">
+          <input type="number" id="uuidCount" class="uuid-input" min="1" max="20" value="1" placeholder="Number of UUIDs to generate">
+          <button class="uuid-btn" onclick="generateUuids()">Generate UUIDs</button>
+        </div>
+      </div>
+      
+      <div class="uuid-results" id="uuidResults">
+
+      </div>
+    </div>
+  </section>
+
+  <div class="warning-dialog" id="warningDialog">
+    <div class="warning-content">
+      <div class="warning-icon">⚠️</div>
+      <h3 id="warningTitle">Warning</h3>
+      <p id="warningMessage">This pack appears to be for PC only. Do you want to continue with the correction?</p>
+      <div class="warning-buttons">
+        <button class="warning-btn btn-yes" onclick="continueProcessing()">Yes, Continue</button>
+        <button class="warning-btn btn-no" onclick="cancelProcessing()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script>
     const homeSection = document.getElementById("home");
     const newsSection = document.getElementById("news");
+    const toolsSection = document.getElementById("tools");
+    const packageCorrectionSection = document.getElementById("package-correction");
+    const uuidGeneratorSection = document.getElementById("uuid-generator");
+    
+    let currentFile = null;
+    let hasWarning = false;
+    let warningType = '';
 
     function showNews() {
-      homeSection.style.display = "none";
+      hideAllSections();
       newsSection.style.display = "block";
       fetchAndDisplayNotes();
     }
 
     function showHome() {
-      newsSection.style.display = "none";
+      hideAllSections();
       homeSection.style.display = "flex";
+    }
+
+    function showTools() {
+      hideAllSections();
+      toolsSection.style.display = "block";
+    }
+
+    function showPackageCorrection() {
+      hideAllSections();
+      packageCorrectionSection.style.display = "block";
+    }
+
+    function showUuidGenerator() {
+      hideAllSections();
+      uuidGeneratorSection.style.display = "block";
+    }
+
+    function hideAllSections() {
+      homeSection.style.display = "none";
+      newsSection.style.display = "none";
+      toolsSection.style.display = "none";
+      packageCorrectionSection.style.display = "none";
+      uuidGeneratorSection.style.display = "none";
+    }
+
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const progressContainer = document.getElementById('progressContainer');
+    const statusMessage = document.getElementById('statusMessage');
+
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        handleFile(files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        handleFile(e.target.files[0]);
+      }
+    });
+
+    function handleFile(file) {
+      const validTypes = ['application/zip', 'application/x-zip-compressed'];
+      const validExtensions = ['.zip', '.mcpack'];
+      
+      const hasValidType = validTypes.includes(file.type);
+      const hasValidExtension = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+      
+      if (!hasValidType && !hasValidExtension) {
+        showStatus('Please select a valid .zip or .mcpack file.', 'error');
+        return;
+      }
+
+      currentFile = file;
+      processFile(file);
+    }
+
+    async function processFile(file) {
+      showProgress(0, 'Reading file...');
+      
+      try {
+        const zip = new JSZip();
+        const zipContent = await zip.loadAsync(file);
+        
+        showProgress(25, 'Analyzing package structure...');
+
+        let manifestPath = null;
+        let manifestFolder = '';
+        hasWarning = false;
+        warningType = '';
+
+        const fileList = [];
+        zipContent.forEach((relativePath, zipEntry) => {
+          fileList.push({path: relativePath, entry: zipEntry});
+
+          if (relativePath.endsWith('manifest.json') && !zipEntry.dir) {
+            manifestPath = relativePath;
+            manifestFolder = relativePath.substring(0, relativePath.lastIndexOf('/') + 1);
+          }
+
+          if (relativePath.includes('persona/') || relativePath.endsWith('pack.mcmeta')) {
+            hasWarning = true;
+            if (relativePath.includes('persona/')) {
+              warningType = 'persona';
+            } else if (relativePath.endsWith('pack.mcmeta')) {
+              warningType = 'mcmeta';
+            }
+          }
+        });
+        
+        if (!manifestPath) {
+          showStatus('No manifest.json found in the package. This may not be a valid Minecraft addon.', 'error');
+          return;
+        }
+        
+        showProgress(50, 'Found manifest.json...');
+
+        if (hasWarning) {
+          showWarningDialog();
+          return;
+        }
+
+        await createCorrectedPackage(zipContent, manifestFolder, file.name);
+        
+      } catch (error) {
+        showStatus(`Error processing file: ${error.message}`, 'error');
+      }
+    }
+
+    function showWarningDialog() {
+      const dialog = document.getElementById('warningDialog');
+      const title = document.getElementById('warningTitle');
+      const message = document.getElementById('warningMessage');
+      
+      if (warningType === 'persona') {
+        title.textContent = 'PC-Only Pack Detected';
+        message.textContent = 'This pack contains a "persona" folder, indicating it\'s designed for PC only. Do you want to continue with the correction?';
+      } else if (warningType === 'mcmeta') {
+        title.textContent = 'Java Edition Pack Detected';
+        message.textContent = 'This pack contains "pack.mcmeta" file, indicating it\'s a Java Edition resource pack. Do you want to continue with the correction?';
+      }
+      
+      dialog.style.display = 'flex';
+    }
+
+    function continueProcessing() {
+      document.getElementById('warningDialog').style.display = 'none';
+      
+      if (currentFile) {
+        processFileWithoutWarning(currentFile);
+      }
+    }
+
+    function cancelProcessing() {
+      document.getElementById('warningDialog').style.display = 'none';
+      showStatus('Processing cancelled.', 'error');
+      currentFile = null;
+      hasWarning = false;
+      warningType = '';
+    }
+
+    async function processFileWithoutWarning(file) {
+      try {
+        const zip = new JSZip();
+        const zipContent = await zip.loadAsync(file);
+        
+        showProgress(50, 'Processing package...');
+        
+        let manifestPath = null;
+        let manifestFolder = '';
+        
+        zipContent.forEach((relativePath, zipEntry) => {
+          if (relativePath.endsWith('manifest.json') && !zipEntry.dir) {
+            manifestPath = relativePath;
+            manifestFolder = relativePath.substring(0, relativePath.lastIndexOf('/') + 1);
+          }
+        });
+        
+        await createCorrectedPackage(zipContent, manifestFolder, file.name);
+        
+      } catch (error) {
+        showStatus(`Error processing file: ${error.message}`, 'error');
+      }
+    }
+
+    async function createCorrectedPackage(zipContent, manifestFolder, originalName) {
+      showProgress(75, 'Creating corrected package...');
+      
+      const newZip = new JSZip();
+
+      const promises = [];
+      zipContent.forEach((relativePath, zipEntry) => {
+        if (relativePath.startsWith(manifestFolder) && !zipEntry.dir) {
+          const newPath = relativePath.substring(manifestFolder.length);
+          if (newPath) {
+            promises.push(
+              zipEntry.async('blob').then(content => {
+                newZip.file(newPath, content);
+              })
+            );
+          }
+        }
+      });
+      
+      await Promise.all(promises);
+      
+      showProgress(90, 'Generating download...');
+
+      const correctedBlob = await newZip.generateAsync({type: 'blob'});
+
+      const url = URL.createObjectURL(correctedBlob);
+      const a = document.createElement('a');
+      a.href = url;
+
+      let outputName = originalName;
+      if (originalName.toLowerCase().endsWith('.zip')) {
+        outputName = originalName.replace(/\.zip$/i, '_corrected.mcpack');
+      } else if (originalName.toLowerCase().endsWith('.mcpack')) {
+        outputName = originalName.replace(/\.mcpack$/i, '_corrected.mcpack');
+      } else {
+        outputName = originalName + '_corrected.mcpack';
+      }
+      
+      a.download = outputName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      showProgress(100, 'Complete!');
+      showStatus(`Package corrected successfully! Download started for: ${outputName}`, 'success');
+
+      setTimeout(() => {
+        progressContainer.style.display = 'none';
+        statusMessage.style.display = 'none';
+        fileInput.value = '';
+        currentFile = null;
+        hasWarning = false;
+        warningType = '';
+      }, 3000);
+    }
+
+    function showProgress(percent, text) {
+      progressContainer.style.display = 'block';
+      document.getElementById('progressFill').style.width = percent + '%';
+      document.getElementById('progressText').textContent = text;
+    }
+
+    function showStatus(message, type) {
+      statusMessage.textContent = message;
+      statusMessage.className = `status-message status-${type}`;
+      statusMessage.style.display = 'block';
+      
+      if (type === 'error') {
+        progressContainer.style.display = 'none';
+      }
+    }
+
+    function generateUuids() {
+      const count = parseInt(document.getElementById('uuidCount').value) || 1;
+      const includeHyphens = document.getElementById('hyphensOption').checked;
+      const uppercase = document.getElementById('uppercaseOption').checked;
+      const includeBraces = document.getElementById('bracesOption').checked;
+      
+      const resultsContainer = document.getElementById('uuidResults');
+      resultsContainer.innerHTML = '';
+      
+      for (let i = 0; i < count; i++) {
+        const uuid = generateUuid(includeHyphens, uppercase, includeBraces);
+        const resultElement = document.createElement('div');
+        resultElement.className = 'uuid-result';
+        resultElement.innerHTML = `
+          <div class="uuid-result-text">${uuid}</div>
+          <button class="uuid-copy-btn" onclick="copyToClipboard('${uuid}')">Copy</button>
+        `;
+        resultsContainer.appendChild(resultElement);
+      }
+    }
+
+    function generateUuid(includeHyphens = true, uppercase = false, includeBraces = false) {
+      let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0;
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+
+      if (!includeHyphens) {
+        uuid = uuid.replace(/-/g, '');
+      }
+      
+      if (uppercase) {
+        uuid = uuid.toUpperCase();
+      }
+      
+      if (includeBraces) {
+        uuid = `{${uuid}}`;
+      }
+      
+      return uuid;
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const notification = document.createElement('div');
+        notification.textContent = 'Copied!';
+        notification.style.position = 'fixed';
+        notification.style.bottom = '20px';
+        notification.style.right = '20px';
+        notification.style.backgroundColor = '#1a472a';
+        notification.style.color = '#4ade80';
+        notification.style.padding = '10px 20px';
+        notification.style.borderRadius = '8px';
+        notification.style.zIndex = '1000';
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
     }
 
     async function fetchAndDisplayNotes() {
